@@ -151,9 +151,9 @@ impl RevertManager {
         }
 
         self.transaction_pool
-            .maintain(ChainEvent::Finalized {
+            .maintain(ChainEvent::Revert {
                 hash: snapshot_block_hash,
-                tree_route: retracted_hashes.into(),
+                tree_route: Some(t.into()),
             })
             .await;
 
